@@ -52,6 +52,9 @@
 		E603E30225E873B90050C56B /* SwiftHeroes */ = {
 			isa = PBXGroup;
 			children = (
+				E603E31525E875D40050C56B /* Model */,
+				E603E31425E875C60050C56B /* ViewModel */,
+				E603E31325E875BE0050C56B /* View */,
 				E603E30325E873B90050C56B /* SwiftHeroesApp.swift */,
 				E603E30525E873B90050C56B /* ContentView.swift */,
 				E603E30725E873BB0050C56B /* Assets.xcassets */,
@@ -67,6 +70,27 @@
 				E603E30A25E873BB0050C56B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E603E31325E875BE0050C56B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E603E31425E875C60050C56B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E603E31525E875D40050C56B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
