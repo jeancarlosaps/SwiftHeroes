@@ -11,7 +11,11 @@ import SwiftUI
 struct SwiftHeroesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().onAppear(perform: {
+                let service = HeroeService()
+                
+                service.getCharacters()
+            })
         }
     }
 }
