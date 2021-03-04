@@ -28,6 +28,7 @@ extension APIRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
+        request = request.encoded(parameters: Credentials.marvel)
         
         switch task {
         case .requestPlain:

@@ -12,7 +12,7 @@ struct SwiftHeroesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView().onAppear(perform: {
-                let service = HeroeService()
+                let service = HeroService()
                 
                 service.getCharacters()
             })

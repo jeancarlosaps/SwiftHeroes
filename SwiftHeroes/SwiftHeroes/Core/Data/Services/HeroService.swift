@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol HeroeServiceType {
+protocol HeroServiceType {
     func getCharacters()
 }
 
-struct HeroeService: HeroeServiceType {
+struct HeroService: HeroServiceType {
     
     private var provider: APIProvider<HeroesAPI>
     

@@ -37,7 +37,7 @@ extension HeroesAPI: APIRequest {
     var task: HTTPTask {
         switch self {
         case .getCharacters:
-           return .requestParameters(parameters: ["apikey" : "13bf281feb4982518242da6b4066437d"])
+            return .requestPlain
         }
     }
 }
