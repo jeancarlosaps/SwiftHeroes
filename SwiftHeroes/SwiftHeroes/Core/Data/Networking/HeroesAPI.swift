@@ -8,7 +8,7 @@
 import Foundation
 
 enum HeroesAPI {
-    case getCharacters
+    case getCharacters(Int?)
 }
 
 extension HeroesAPI: APIRequest {
@@ -36,8 +36,9 @@ extension HeroesAPI: APIRequest {
     
     var task: HTTPTask {
         switch self {
-        case .getCharacters:
-            return .requestPlain
+        case .getCharacters(let offset):
+            guard let offset = offset else { return .requestPlain }
+            return .requestParameters(parameters: ["offset": offset])
         }
     }
 }

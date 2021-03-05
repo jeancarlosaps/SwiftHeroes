@@ -10,8 +10,12 @@
 		1E54723025F19D9E0083C0FE /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E54722F25F19D9E0083C0FE /* CryptoSwift */; };
 		1E54723525F1A10C0083C0FE /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54723425F1A10C0083C0FE /* APICredentials.swift */; };
 		1E54723825F1A2060083C0FE /* Enviroment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E54723725F1A2060083C0FE /* Enviroment.plist */; };
+		1E54724425F1A4620083C0FE /* HeroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54724325F1A4620083C0FE /* HeroListView.swift */; };
+		1E54724825F1A4810083C0FE /* HeroListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54724725F1A4810083C0FE /* HeroListViewModel.swift */; };
+		1E54724B25F1A48F0083C0FE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54724A25F1A48F0083C0FE /* Hero.swift */; };
+		1E54725025F1ABF00083C0FE /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54724F25F1ABF00083C0FE /* HeroCell.swift */; };
+		1E54725525F1AD7A0083C0FE /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1E54725425F1AD7A0083C0FE /* URLImage */; };
 		E603E30425E873B90050C56B /* SwiftHeroesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E30325E873B90050C56B /* SwiftHeroesApp.swift */; };
-		E603E30625E873B90050C56B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E30525E873B90050C56B /* ContentView.swift */; };
 		E603E30825E873BB0050C56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E603E30725E873BB0050C56B /* Assets.xcassets */; };
 		E603E30B25E873BB0050C56B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E603E30A25E873BB0050C56B /* Preview Assets.xcassets */; };
 		E603E31B25E8782B0050C56B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E31A25E8782B0050C56B /* HTTPMethod.swift */; };
@@ -28,9 +32,12 @@
 /* Begin PBXFileReference section */
 		1E54723425F1A10C0083C0FE /* APICredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICredentials.swift; sourceTree = "<group>"; };
 		1E54723725F1A2060083C0FE /* Enviroment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Enviroment.plist; sourceTree = "<group>"; };
+		1E54724325F1A4620083C0FE /* HeroListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListView.swift; sourceTree = "<group>"; };
+		1E54724725F1A4810083C0FE /* HeroListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewModel.swift; sourceTree = "<group>"; };
+		1E54724A25F1A48F0083C0FE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		1E54724F25F1ABF00083C0FE /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 		E603E30025E873B90050C56B /* SwiftHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E603E30325E873B90050C56B /* SwiftHeroesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHeroesApp.swift; sourceTree = "<group>"; };
-		E603E30525E873B90050C56B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E603E30725E873BB0050C56B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E603E30A25E873BB0050C56B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E603E30C25E873BB0050C56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E54725525F1AD7A0083C0FE /* URLImage in Frameworks */,
 				1E54723025F19D9E0083C0FE /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +65,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E54723F25F1A4410083C0FE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1E54724225F1A4530083C0FE /* Model */,
+				1E54724125F1A44E0083C0FE /* View */,
+				1E54724025F1A4470083C0FE /* ViewModel */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1E54724025F1A4470083C0FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E54724725F1A4810083C0FE /* HeroListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E54724125F1A44E0083C0FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E54724E25F1ABE40083C0FE /* Cells */,
+				1E54724325F1A4620083C0FE /* HeroListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E54724225F1A4530083C0FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E54724A25F1A48F0083C0FE /* Hero.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E54724E25F1ABE40083C0FE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1E54724F25F1ABF00083C0FE /* HeroCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E603E2F725E873B90050C56B = {
 			isa = PBXGroup;
 			children = (
@@ -76,10 +127,9 @@
 		E603E30225E873B90050C56B /* SwiftHeroes */ = {
 			isa = PBXGroup;
 			children = (
+				1E54723F25F1A4410083C0FE /* Sources */,
 				E603E31725E877DE0050C56B /* Core */,
-				E603E31625E877BF0050C56B /* Sources */,
 				E603E30325E873B90050C56B /* SwiftHeroesApp.swift */,
-				E603E30525E873B90050C56B /* ContentView.swift */,
 				E603E30725E873BB0050C56B /* Assets.xcassets */,
 				E603E30C25E873BB0050C56B /* Info.plist */,
 				1E54723725F1A2060083C0FE /* Enviroment.plist */,
@@ -94,37 +144,6 @@
 				E603E30A25E873BB0050C56B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E603E31325E875BE0050C56B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E603E31425E875C60050C56B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		E603E31525E875D40050C56B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E603E31625E877BF0050C56B /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				E603E31525E875D40050C56B /* Model */,
-				E603E31425E875C60050C56B /* ViewModel */,
-				E603E31325E875BE0050C56B /* View */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		E603E31725E877DE0050C56B /* Core */ = {
@@ -210,6 +229,7 @@
 			name = SwiftHeroes;
 			packageProductDependencies = (
 				1E54722F25F19D9E0083C0FE /* CryptoSwift */,
+				1E54725425F1AD7A0083C0FE /* URLImage */,
 			);
 			productName = SwiftHeroes;
 			productReference = E603E30025E873B90050C56B /* SwiftHeroes.app */;
@@ -240,6 +260,7 @@
 			mainGroup = E603E2F725E873B90050C56B;
 			packageReferences = (
 				1E54722E25F19D9E0083C0FE /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				1E54725325F1AD7A0083C0FE /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = E603E30125E873B90050C56B /* Products */;
 			projectDirPath = "";
@@ -268,17 +289,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E54725025F1ABF00083C0FE /* HeroCell.swift in Sources */,
 				E603E31F25E878660050C56B /* HTTPTask.swift in Sources */,
 				E603E32B25E87E3E0050C56B /* APIProvider.swift in Sources */,
-				E603E30625E873B90050C56B /* ContentView.swift in Sources */,
 				1E54723525F1A10C0083C0FE /* APICredentials.swift in Sources */,
 				E603E30425E873B90050C56B /* SwiftHeroesApp.swift in Sources */,
+				1E54724B25F1A48F0083C0FE /* Hero.swift in Sources */,
 				E603E33525E883500050C56B /* CharactersResponse.swift in Sources */,
 				E603E33925E8840B0050C56B /* HeroService.swift in Sources */,
 				E603E32225E879000050C56B /* APIRequest.swift in Sources */,
 				E603E33125E881F20050C56B /* HeroesAPI.swift in Sources */,
 				E603E31B25E8782B0050C56B /* HTTPMethod.swift in Sources */,
+				1E54724425F1A4620083C0FE /* HeroListView.swift in Sources */,
 				E603E32525E87D8E0050C56B /* APIResponse.swift in Sources */,
+				1E54724825F1A4810083C0FE /* HeroListViewModel.swift in Sources */,
 				E603E32825E87DC20050C56B /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +500,14 @@
 				minimumVersion = 1.3.8;
 			};
 		};
+		1E54725325F1AD7A0083C0FE /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -483,6 +515,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E54722E25F19D9E0083C0FE /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		1E54725425F1AD7A0083C0FE /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E54725325F1AD7A0083C0FE /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

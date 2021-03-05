@@ -33,8 +33,9 @@ extension APIRequest {
         switch task {
         case .requestPlain:
             return request
-        case .requestParameters(let parameters):
-            return request.encoded(parameters: parameters)
+        case .requestParameters(var parameters):
+            let req = request.encoded(parameters: parameters.merge(dict: Credentials.marvel))
+            return req
         }
     }
 }
@@ -47,8 +48,18 @@ extension URLRequest {
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         
-        components?.query = parameters?.compactMap{ "\($0.key)=\($0.value)" }.joined(separator: "&").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let queryItems = parameters?.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        components?.queryItems = queryItems
         
         return URLRequest(url: components?.url ?? url)
+    }
+}
+
+extension Dictionary {
+    mutating func merge(dict: [Key: Value]) -> Dictionary {
+        for (k, v) in dict {
+            updateValue(v, forKey: k)
+        }
+        return self
     }
 }

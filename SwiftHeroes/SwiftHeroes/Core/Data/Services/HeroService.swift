@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HeroServiceType {
-    func getCharacters()
+    func getCharacters(offset: Int?, completion: @escaping (Result<CharactersResponse, Error>) -> Void)
 }
 
 struct HeroService: HeroServiceType {
@@ -19,11 +19,13 @@ struct HeroService: HeroServiceType {
         self.provider = provider
     }
     
-    func getCharacters() {
-        provider.request(.getCharacters) { (result) in
+    func getCharacters(offset: Int? = nil, completion: @escaping (Result<CharactersResponse, Error>) -> Void) {
+        provider.request(.getCharacters(offset)) { result in
             switch result {
-            case .success(let data): print(decode(CharactersResponse.self, data: data.data))
-                case .failure(let error): print(error)
+            case .success(let response):
+                completion(.success(decode(CharactersResponse.self, data: response.data)!))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

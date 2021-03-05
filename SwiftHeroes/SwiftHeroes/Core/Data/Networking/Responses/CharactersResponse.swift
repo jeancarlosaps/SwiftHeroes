@@ -12,5 +12,6 @@ struct CharactersResponse: Codable {
     
     struct ContentData: Codable {
         let total: Int
+        let results: [Hero]
     }
 }
