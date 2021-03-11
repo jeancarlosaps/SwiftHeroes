@@ -27,6 +27,7 @@
 		E603E33125E881F20050C56B /* HeroesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E33025E881F20050C56B /* HeroesAPI.swift */; };
 		E603E33525E883500050C56B /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E33425E883500050C56B /* CharactersResponse.swift */; };
 		E603E33925E8840B0050C56B /* HeroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E33825E8840B0050C56B /* HeroService.swift */; };
+		E673720625FAD739008AC762 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673720525FAD739008AC762 /* HeroDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E603E33025E881F20050C56B /* HeroesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesAPI.swift; sourceTree = "<group>"; };
 		E603E33425E883500050C56B /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
 		E603E33825E8840B0050C56B /* HeroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroService.swift; sourceTree = "<group>"; };
+		E673720525FAD739008AC762 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				1E54724E25F1ABE40083C0FE /* Cells */,
 				1E54724325F1A4620083C0FE /* HeroListView.swift */,
+				E673720525FAD739008AC762 /* HeroDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				E603E32225E879000050C56B /* APIRequest.swift in Sources */,
 				E603E33125E881F20050C56B /* HeroesAPI.swift in Sources */,
 				E603E31B25E8782B0050C56B /* HTTPMethod.swift in Sources */,
+				E673720625FAD739008AC762 /* HeroDetailView.swift in Sources */,
 				1E54724425F1A4620083C0FE /* HeroListView.swift in Sources */,
 				E603E32525E87D8E0050C56B /* APIResponse.swift in Sources */,
 				1E54724825F1A4810083C0FE /* HeroListViewModel.swift in Sources */,

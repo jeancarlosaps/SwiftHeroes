@@ -34,6 +34,7 @@ final class HeroListViewModel: ObservableObject {
         service.getCharacters(offset: heroes.count) { [weak self] result in
             switch result {
             case .success(let response):
+                print(response.data.results)
                 self?.handleHeroes(response.data.results)
             default:
                 break

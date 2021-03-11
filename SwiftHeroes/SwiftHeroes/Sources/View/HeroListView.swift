@@ -34,12 +34,16 @@ struct HeroListView: View {
     
     var listView: some View {
         List(viewModel.heroes, id: \.name) { hero in
-            HeroCell(hero: hero)
-                .onAppear {
-                    if hero == viewModel.heroes.last {
-                        viewModel.loadMore()
+            NavigationLink(
+                destination: HeroDetailView(hero: hero) )
+            {
+                HeroCell(hero: hero)
+                    .onAppear {
+                        if hero == viewModel.heroes.last {
+                            viewModel.loadMore()
+                        }
                     }
-                }
+            }
         }.listStyle(InsetGroupedListStyle())
     }
 }
