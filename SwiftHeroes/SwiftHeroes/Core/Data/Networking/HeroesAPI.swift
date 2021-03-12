@@ -9,6 +9,7 @@ import Foundation
 
 enum HeroesAPI {
     case getCharacters(Int?)
+    case getCharactersByName(String)
 }
 
 extension HeroesAPI: APIRequest {
@@ -18,14 +19,14 @@ extension HeroesAPI: APIRequest {
     
     var path: String {
         switch self {
-        case .getCharacters:
+        default :
             return "/characters"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getCharacters:
+        default:
             return .GET
         }
     }
@@ -39,6 +40,9 @@ extension HeroesAPI: APIRequest {
         case .getCharacters(let offset):
             guard let offset = offset else { return .requestPlain }
             return .requestParameters(parameters: ["offset": offset])
+            
+        case .getCharactersByName(let name):
+            return .requestParameters(parameters: ["nameStartsWith": name])
         }
     }
 }

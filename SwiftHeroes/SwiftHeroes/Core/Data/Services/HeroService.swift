@@ -30,6 +30,21 @@ struct HeroService: HeroServiceType {
         }
     }
     
+    func getCharacters(name: String, completion: @escaping (Result<CharactersResponse, Error>) -> Void) {
+        guard name.isEmpty == false else { getCharacters(completion: completion)
+            return
+        }
+        
+        provider.request(.getCharactersByName(name)) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(decode(CharactersResponse.self, data: response.data)!))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     private func decode<T: Decodable>(_ type: T.Type, data: Data?) -> T? {
         
         guard let data = data else { return nil }

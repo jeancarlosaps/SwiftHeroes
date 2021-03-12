@@ -17,6 +17,7 @@ struct HeroListView: View {
     var body: some View {
         NavigationView {
             VStack {
+                SearchBar(text: $viewModel.search).padding(.top)
                 if viewModel.loading {
                     loadingView
                 } else {
@@ -29,7 +30,11 @@ struct HeroListView: View {
     }
     
     var loadingView: some View {
-        Text("Carregando..")
+        VStack{
+            Spacer()
+            Text("Carregando..")
+            Spacer()
+        }
     }
     
     var listView: some View {

@@ -28,6 +28,7 @@
 		E603E33525E883500050C56B /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E33425E883500050C56B /* CharactersResponse.swift */; };
 		E603E33925E8840B0050C56B /* HeroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603E33825E8840B0050C56B /* HeroService.swift */; };
 		E673720625FAD739008AC762 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673720525FAD739008AC762 /* HeroDetailView.swift */; };
+		E673720925FAE3F7008AC762 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673720825FAE3F7008AC762 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		E603E33425E883500050C56B /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
 		E603E33825E8840B0050C56B /* HeroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroService.swift; sourceTree = "<group>"; };
 		E673720525FAD739008AC762 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
+		E673720825FAE3F7008AC762 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				1E54724E25F1ABE40083C0FE /* Cells */,
 				1E54724325F1A4620083C0FE /* HeroListView.swift */,
 				E673720525FAD739008AC762 /* HeroDetailView.swift */,
+				E673720825FAE3F7008AC762 /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				1E54724425F1A4620083C0FE /* HeroListView.swift in Sources */,
 				E603E32525E87D8E0050C56B /* APIResponse.swift in Sources */,
 				1E54724825F1A4810083C0FE /* HeroListViewModel.swift in Sources */,
+				E673720925FAE3F7008AC762 /* SearchBar.swift in Sources */,
 				E603E32825E87DC20050C56B /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

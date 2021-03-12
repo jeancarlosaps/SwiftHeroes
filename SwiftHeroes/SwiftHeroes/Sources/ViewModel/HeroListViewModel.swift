@@ -13,6 +13,9 @@ final class HeroListViewModel: ObservableObject {
     
     @Published var heroes: [Hero] = []
     @Published var loading: Bool = false
+    @Published var search: String = "" { didSet {
+        search(name: search)
+    }}
     
     init(service: HeroService = HeroService()) {
         self.service = service
@@ -36,6 +39,23 @@ final class HeroListViewModel: ObservableObject {
             case .success(let response):
                 print(response.data.results)
                 self?.handleHeroes(response.data.results)
+            default:
+                break
+            }
+        }
+    }
+    
+    func search(name: String) {
+        loading = true
+        
+        service.getCharacters(name: name) { [weak self] result in
+            switch result {
+            
+            case .success(let response):
+                DispatchQueue.main.async { [weak self] in 
+                    self?.heroes = response.data.results
+                    self?.loading = false
+                }
             default:
                 break
             }
