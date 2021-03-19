@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 final class HeroListViewModel: ObservableObject {
     
     private let service: HeroService
+    private var subscription = Set<AnyCancellable>()
     
     @Published var heroes: [Hero] = []
     @Published var loading: Bool = false
@@ -23,49 +25,43 @@ final class HeroListViewModel: ObservableObject {
     
     func onAppear() {
         loading = true
-        service.getCharacters { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.handleHeroes(response.data.results)
-            default:
-                break
+        service.getCharacters()
+            .receive(on: RunLoop.main)
+            .sink { (error) in
+                print(error)
+            } receiveValue: { (charactersResponse) in
+                self.handleHeroes(charactersResponse.data.results)
             }
-        }
+            .store(in: &subscription)
     }
     
     func loadMore() {
-        service.getCharacters(offset: heroes.count) { [weak self] result in
-            switch result {
-            case .success(let response):
-                print(response.data.results)
-                self?.handleHeroes(response.data.results)
-            default:
-                break
+        service.getCharacters(offset: heroes.count)
+            .receive(on: RunLoop.main)
+            .sink { (error) in
+                print(error)
+            } receiveValue: { (charactersResponse) in
+                self.handleHeroes(charactersResponse.data.results)
             }
-        }
+            .store(in: &subscription)
     }
     
     func search(name: String) {
         loading = true
         
-        service.getCharacters(name: name) { [weak self] result in
-            switch result {
-            
-            case .success(let response):
-                DispatchQueue.main.async { [weak self] in 
-                    self?.heroes = response.data.results
-                    self?.loading = false
-                }
-            default:
-                break
+        service.getCharacters(name: name)
+            .throttle(for: 0.5, scheduler: RunLoop.main, latest: true)
+            .sink { (error) in
+                print(error)
+            } receiveValue: { (charactersResponse) in
+                self.heroes = charactersResponse.data.results
+                self.loading = false
             }
-        }
+            .store(in: &subscription)
     }
     
     private func handleHeroes(_ heroes: [Hero]) {
-        DispatchQueue.main.async { [weak self] in
-            self?.heroes += heroes
-            self?.loading = false
-        }
+        self.heroes += heroes
+        loading = false
     }
 }

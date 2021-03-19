@@ -50,5 +50,5 @@ struct HeroListView: View {
                     }
             }
         }.listStyle(InsetGroupedListStyle())
-    }
+    }	
 }

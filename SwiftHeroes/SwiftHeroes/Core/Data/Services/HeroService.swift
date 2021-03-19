@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol HeroServiceType {
-    func getCharacters(offset: Int?, completion: @escaping (Result<CharactersResponse, Error>) -> Void)
+    func getCharacters(offset: Int?) -> AnyPublisher<CharactersResponse, Error>
 }
 
 struct HeroService: HeroServiceType {
@@ -19,44 +20,21 @@ struct HeroService: HeroServiceType {
         self.provider = provider
     }
     
-    func getCharacters(offset: Int? = nil, completion: @escaping (Result<CharactersResponse, Error>) -> Void) {
-        provider.request(.getCharacters(offset)) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(decode(CharactersResponse.self, data: response.data)!))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+    func getCharacters(offset: Int? = nil) -> AnyPublisher<CharactersResponse, Error> {
+        provider.request(.getCharacters(offset))
+            .map { $0.data }
+            .decode(type: CharactersResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
     
-    func getCharacters(name: String, completion: @escaping (Result<CharactersResponse, Error>) -> Void) {
-        guard name.isEmpty == false else { getCharacters(completion: completion)
-            return
+    func getCharacters(name: String) -> AnyPublisher<CharactersResponse, Error> {
+        guard name.isEmpty == false else {
+            return getCharacters()
         }
         
-        provider.request(.getCharactersByName(name)) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(decode(CharactersResponse.self, data: response.data)!))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func decode<T: Decodable>(_ type: T.Type, data: Data?) -> T? {
-        
-        guard let data = data else { return nil }
-        
-        do {
-            let result = try JSONDecoder().decode(type, from: data)
-            
-            return result
-        } catch {
-            print(error)
-        }
-        
-        return nil
+        return provider.request(.getCharactersByName(name))
+            .map { $0.data }
+            .decode(type: CharactersResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }

@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 protocol APIProviderType {
-    typealias Completion = (_ result: Result<APIResponse, APIError>) -> Void
     associatedtype Request: APIRequest
-    func request(_ target: Request, completion: @escaping Completion) -> URLSessionDataTask?
+    func request(_ target: Request) -> URLSession.DataTaskPublisher
 }
 
 class APIProvider<Request: APIRequest>: APIProviderType {
@@ -22,17 +22,9 @@ class APIProvider<Request: APIRequest>: APIProviderType {
     }
     
     @discardableResult
-    func request(_ target: Request, completion: @escaping Completion) -> URLSessionDataTask? {
+    func request(_ target: Request) -> URLSession.DataTaskPublisher {
         let req = target.urlRequest()
-        let task = urlSession.dataTask(with: req) {data, _, error in
-            if let _ = error {
-                completion(.failure(.unknown))
-            }
-            
-            completion(.success(APIResponse(statusCode: 200, data: data)))
-        }
-        
-        task.resume()
+        let task = urlSession.dataTaskPublisher(for: req)
         
         return task
     }
