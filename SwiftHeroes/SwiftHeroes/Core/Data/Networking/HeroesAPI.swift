@@ -10,6 +10,7 @@ import Foundation
 enum HeroesAPI {
     case getCharacters(Int?)
     case getCharactersByName(String)
+    case getComics(Int)
 }
 
 extension HeroesAPI: APIRequest {
@@ -19,6 +20,8 @@ extension HeroesAPI: APIRequest {
     
     var path: String {
         switch self {
+        case .getComics(let id):
+            return "/characters/\(id)/comics"
         default :
             return "/characters"
         }
@@ -43,6 +46,8 @@ extension HeroesAPI: APIRequest {
             
         case .getCharactersByName(let name):
             return .requestParameters(parameters: ["nameStartsWith": name])
+        case .getComics(_):
+            return .requestPlain
         }
     }
 }

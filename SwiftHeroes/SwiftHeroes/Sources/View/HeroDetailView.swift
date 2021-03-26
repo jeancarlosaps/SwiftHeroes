@@ -8,25 +8,35 @@
 import SwiftUI
 
 struct HeroDetailView: View {
-    
     let hero: Hero
+    
+    @ObservedObject var viewModel: HeroDetailViewModel
+    
+    init(hero: Hero) {
+        self.hero = hero
+        self.viewModel = HeroDetailViewModel(heroID: hero.id)
+    }
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
-                        ForEach(hero.series.items) { item in
-                            Text(item.name)
+                        ForEach(viewModel.comics) { comic in
+                            ComicCell(comic: comic)
                         }
                     }
                 }
             }.navigationTitle(hero.name)
+            .padding()
+            .onAppear {
+                viewModel.onAppear()
+            }
         }
     }
 }
 
 struct HeroDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HeroDetailView(hero: Hero(name: "Spider", description: "Amigo da vizinhança", thumbnail: Thumbnail(path: "", extension: ""), series: Series(available: 10, returned: 10, collectionURI: "", items: [])))
+        HeroDetailView(hero: Hero(id: 1, name: "Spider", description: "Amigo da vizinhança", thumbnail: Thumbnail(path: "", extension: ""), series: Series(available: 10, returned: 10, collectionURI: "", items: [])))
     }
 }

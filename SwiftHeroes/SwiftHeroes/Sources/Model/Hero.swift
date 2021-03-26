@@ -7,19 +7,15 @@
 
 import Foundation
 
-struct Thumbnail: Codable {
-    let path: String
-    let `extension`: String
-}
-
 struct Hero: Codable, Equatable {
+    let id: Int
     let name: String
     let description: String
     let thumbnail: Thumbnail
     let series: Series
     
     static func == (lhs: Hero, rhs: Hero) -> Bool {
-        lhs.name == rhs.name
+        lhs.id == rhs.id
     }
 }
 

@@ -10,9 +10,24 @@ import Combine
 
 protocol HeroServiceType {
     func getCharacters(offset: Int?) -> AnyPublisher<CharactersResponse, Error>
+    func getCharacters(name: String) -> AnyPublisher<CharactersResponse, Error>
+    func getComics(id: Int) -> AnyPublisher<ComicsResponse, Error>
+}
+
+extension HeroServiceType {
+    func getCharacters() -> AnyPublisher<CharactersResponse, Error> {
+        return getCharacters(offset: nil)
+    }
 }
 
 struct HeroService: HeroServiceType {
+    func getComics(id: Int) -> AnyPublisher<ComicsResponse, Error> {
+        provider.request(.getComics(id))
+            .map { $0.data }
+            .decode(type: ComicsResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+    
     
     private var provider: APIProvider<HeroesAPI>
     

@@ -10,7 +10,7 @@ import Combine
 
 final class HeroListViewModel: ObservableObject {
     
-    private let service: HeroService
+    private let service: HeroServiceType
     private var subscription = Set<AnyCancellable>()
     
     @Published var heroes: [Hero] = []
@@ -19,7 +19,7 @@ final class HeroListViewModel: ObservableObject {
         search(name: search)
     }}
     
-    init(service: HeroService = HeroService()) {
+    init(service: HeroServiceType = HeroService()) {
         self.service = service
     }
     

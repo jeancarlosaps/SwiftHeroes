@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HeroListView: View {
-    @ObservedObject var viewModel: HeroListViewModel
-    
-    init(viewModel: HeroListViewModel = HeroListViewModel()) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel = HeroListViewModel()
     
     var body: some View {
         NavigationView {
